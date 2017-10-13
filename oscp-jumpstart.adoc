@@ -13,7 +13,7 @@ OpenShift Online is Red Hat’s public cloud application development and hosting
 
 Here is a Videos explaining OpenShift: 
 https://youtu.be/D_Lj0rObunI[Introduction into OpenShift] +
-//https://www.youtube.com/watch?v=aZ40GobvA1c[What is PaaS?]
+https://www.youtube.com/watch?v=aZ40GobvA1c[What is PaaS?]
 
 Official documentation for https://docs.openshift.com/container-platform/3.5/welcome/index.html[OpenShift Container Platform]
 
