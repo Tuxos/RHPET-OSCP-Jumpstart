@@ -11,9 +11,9 @@ Autors: Dennis Deitermann, Daniel Messer, Lutz Lange
 
 OpenShift Online is Red Hat’s public cloud application development and hosting platform that automates the provisioning, management and scaling of applications so that you can focus on writing the code for your business, startup, or big idea.
 
-Here is a Videos explaining OpenShift: 
-https://youtu.be/D_Lj0rObunI[Introduction into OpenShift] +
-https://www.youtube.com/watch?v=aZ40GobvA1c[What is PaaS?]
+Here is a Videos explaining OpenShift: +
+https://youtu.be/D_Lj0rObunI[Introduction into OpenShift^] +
+https://www.youtube.com/watch?v=aZ40GobvA1c[What is PaaS?^]
 
 Official documentation for https://docs.openshift.com/container-platform/3.5/welcome/index.html[OpenShift Container Platform]
 
