@@ -1,4 +1,4 @@
-= Test 456 Red Hat OpenShift Container Platform Jumpstart
+= Red Hat OpenShift Container Platform Jumpstart
 Dennis Deitermann, Daniel Messer, Lutz Lange
 :iconsdir: /etc/asciidoc/images/icons
 :numbered:
