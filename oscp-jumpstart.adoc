@@ -1,4 +1,4 @@
-= Test 123 Manage your Container with Red Hat OpenShift 
+= Manage your Container with Red Hat OpenShift 
 Dennis Deitermann, Daniel Messer, Lutz Lange
 :iconsdir: /etc/asciidoc/images/icons
 :numbered:
