@@ -1,4 +1,4 @@
-= Manage your Container with Red Hat OpenShift 3.6
+= Manage your Container with Red Hat OpenShift 3.5
 Dennis Deitermann, Daniel Messer, Lutz Lange
 :iconsdir: /etc/asciidoc/images/icons
 :numbered:
