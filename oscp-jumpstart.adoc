@@ -1,5 +1,5 @@
 = Red Hat OpenShift Container Platform Jumpstart
-Autor: Dennis Deitermann, Daniel Messer, Lutz Lange
+Autors: Dennis Deitermann, Daniel Messer, Lutz Lange
 :iconsdir: /etc/asciidoc/images/icons
 :numbered:
 :icons:
