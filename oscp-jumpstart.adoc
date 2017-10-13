@@ -1,5 +1,5 @@
 = Manage your Container with Red Hat OpenShift 
-Dennis Deitermann <dennis@redhat.com>, Daniel Messer <dmesser@redhat.com>, Lutz Lange <llange@redhat.com>
+Dennis Deitermann, Daniel Messer, Lutz Lange
 :iconsdir: /etc/asciidoc/images/icons
 :numbered:
 :icons:
@@ -113,7 +113,7 @@ Password for the Proxy is: `r3dh4t1!`
 [cols="3*", options="header"]
 |===
 | Name | Password | Role
-| luXX | ask the instructor | ssh user to connect to the gateway VM
+| userXX | ask the instructor | ssh user to connect to the gateway VM
 | root | r3dh4t1! | root user for all VMs
 | admin | r3dh4t1! | OSCP & CloudForms Administrator & Auth user for the Proxy
 | marina | r3dh4t1! | Developer/User
@@ -1590,7 +1590,7 @@ Cloning "https://github.com/openshift/sti-php" ...
 	Author:	lucasnetau <james@lucas.net.au>
 	Date:	Fri Mar 17 17:55:28 2017 +1100
 
----> Installing application source...
+--> Installing application source...
 
 
 Pushing image 172.30.17.242:5000/explore-example/sti-php:latest ...
