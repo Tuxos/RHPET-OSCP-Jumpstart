@@ -15,7 +15,7 @@ Here is a Videos explaining OpenShift: +
 https://youtu.be/D_Lj0rObunI[Introduction into OpenShift^] +
 https://www.youtube.com/watch?v=aZ40GobvA1c[What is PaaS?^]
 
-Official documentation for https://docs.openshift.com/container-platform/3.5/welcome/index.html[OpenShift Container Platform]
+Official documentation for https://docs.openshift.com/container-platform/3.5/welcome/index.html[OpenShift Container Platform^]
 
 ==== Overview
 
@@ -43,19 +43,19 @@ image::http://www.rhpet.de/pictures/OpenShift-Architecture.png[OpenShift Archite
 
 The following topics provide high-level, architectural information on core concepts and objects you will encounter when using OpenShift Container Platform. Many of these objects come from Kubernetes, which is extended by OpenShift Container Platform to provide a more feature-rich development lifecycle platform.
 
-* https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/containers_and_images.html#architecture-core-concepts-containers-and-images[Containers and images] are the building blocks for deploying your applications.
+* https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/containers_and_images.html#architecture-core-concepts-containers-and-images[Containers and images^] are the building blocks for deploying your applications.
 
-* https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/pods_and_services.html[Pods and services] allow for containers to communicate with each other and proxy connections.
+* https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/pods_and_services.html[Pods and services^] allow for containers to communicate with each other and proxy connections.
 
-* https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/projects_and_users.html[Projects and users] provide the space and means for communities to organize and manage their content together.
+* https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/projects_and_users.html[Projects and users^] provide the space and means for communities to organize and manage their content together.
 
-* https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/builds_and_image_streams.html[Builds and image streams] allow you to build working images and react to new images.
+* https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/builds_and_image_streams.html[Builds and image streams^] allow you to build working images and react to new images.
 
-* https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/deployments.html[Deployments] add expanded support for the software development and deployment lifecycle.
+* https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/deployments.html[Deployments^] add expanded support for the software development and deployment lifecycle.
 
-* https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/routes.html[Routes] announce your service to the world.
+* https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/routes.html[Routes^] announce your service to the world.
 
-* https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/templates.html[Templates] allow for many objects to be created at once based on customized parameters.
+* https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/templates.html[Templates^] allow for many objects to be created at once based on customized parameters.
 
 Click on the links above to get more information about the respective topic.
 
@@ -63,7 +63,7 @@ Click on the links above to get more information about the respective topic.
 
 First login to the ssh gateway with the user `rhpet`:
 
-To obtain you gateway ip adress https://lab.rhpet.de[login here].
+To obtain you gateway ip adress https://lab.rhpet.de[login here^].
 
 Login into the status page with your user `userXX` (change XX to your user id)  and your password (please ask the instructor).
 
@@ -205,8 +205,8 @@ svc/router - 172.30.49.219 ports 80, 443, 1936
 ----
 
 If you want to learn more about the `oc` command, please look at the following documentation: +
-https://docs.openshift.com/container-platform/3.5/cli_reference/basic_cli_operations.html[Developer CLI Operations] +
-https://docs.openshift.com/container-platform/3.5/cli_reference/admin_cli_operations.html[Administrator CLI Operations]
+https://docs.openshift.com/container-platform/3.5/cli_reference/basic_cli_operations.html[Developer CLI Operations^] +
+https://docs.openshift.com/container-platform/3.5/cli_reference/admin_cli_operations.html[Administrator CLI Operations^]
 
 === Verify Your OpenShift Environment
 
@@ -241,7 +241,7 @@ registry-console-1-tbwwj   1/1       Running   5          8d
 router-1-xq3r6             1/1       Running   12         28d
 ----
 
-Use your browser to connect to the OpenShift web console at https://master.example.com:8443/[https://master.example.com:8443/] and accept the untrusted Certificate.
+Use your browser to connect to the OpenShift web console at https://master.example.com:8443/[https://master.example.com:8443/^] and accept the untrusted Certificate.
 Please don't login this time. We will do this a little bit later.
 
 === Configure OpenShift
@@ -306,7 +306,7 @@ router-1-xq3r6             1/1       Running   7          22d       192.168.0.10
 ----
 
 As you can see, all infrastructure pods are running on the infranode, because we configured a default node selector for this.
-Please look https://blog.openshift.com/deploying-applications-to-specific-nodes/[here] for more information.
+Please look https://blog.openshift.com/deploying-applications-to-specific-nodes/[here^] for more information.
 
 === [Optional] Check Registry
 
@@ -391,7 +391,7 @@ router-1-xq3r6             1/1       Running   12         28d       192.168.0.10
 ----
 
 As you can see, all infrastructure pods are running on the infranode, because we configured a default node selector for this.
-Please look https://blog.openshift.com/deploying-applications-to-specific-nodes/[here] for more information.
+Please look https://blog.openshift.com/deploying-applications-to-specific-nodes/[here^] for more information.
 
 === [Optional] Resource Management Lab
 
@@ -432,7 +432,7 @@ On the master host, run `oadm` to create and assign the administrative user `and
 
 Now have a look at the web console.
 
-. Open your web browser and go to https://master.example.com:8443[https://master.example.com:8443]
+. Open your web browser and go to https://master.example.com:8443[https://master.example.com:8443^]
 +
 [NOTE]
 ====
@@ -1348,7 +1348,7 @@ NOTE: Remember, the router routes proxy connections to the pods directly and not
 
 ==== Explore Registry Container
 
-There is two containers that deal with registry related services. There is the docker-registry and there is the registry-console. We are looking at the docker-registry in this section. We will take a quick look at the link:https://registry-console-default.cloudapps.example.com[Registry-Console] at a later time.
+There is two containers that deal with registry related services. There is the docker-registry and there is the registry-console. We are looking at the docker-registry in this section. We will take a quick look at the https://registry-console-default.cloudapps.example.com[Registry-Console^] at a later time.
 
 Please ensure that your build from earlier is complete.
 
@@ -1648,7 +1648,7 @@ Here, you connect to and become familiar with the web console, create a project 
 
 ==== Connect To and Explore Web Console
 
-. Use your browser to go to the OpenShift web console at `https://master.example.com:8443[https://master.example.com:8443]`.
+. Use your browser to go to the OpenShift web console at `https://master.example.com:8443[https://master.example.com:8443^]`.
 
 . Log in as `andrew` with the password `r3dh4t1!`.
 
@@ -1694,7 +1694,7 @@ Once the project is in place, the *Add to Project* screen is displayed.
 . Review the log as the build progresses.
 
 . Wait for the build to complete and use a browser to navigate to the
- application route: link:http://my-ruby-hello-world-my-ruby-project.cloudapps.example.com[http://my-ruby-hello-world-my-ruby-project.cloudapps.example.com]
+ application route: http://my-ruby-hello-world-my-ruby-project.cloudapps.example.com[http://my-ruby-hello-world-my-ruby-project.cloudapps.example.com^]
 //.. The database for our application isn't running, so expect to see the web
 // page mention that.
 +
@@ -1893,7 +1893,7 @@ In this section, you create two separate template instances in two separate proj
 [NOTE] 
 .Templates are a complex 
 ====
-Templates allow an easy way to define all the required objects of an complex to be sepcified together and made available in Catalogs. Please see our link:https://access.redhat.com/documentation/en-us/openshift_container_platform/3.5/html-single/developer_guide/#dev-guide-templates[OpenShift Documentation on Templates] for more information.
+Templates allow an easy way to define all the required objects of an complex to be sepcified together and made available in Catalogs. Please see our link:https://access.redhat.com/documentation/en-us/openshift_container_platform/3.5/html-single/developer_guide/#dev-guide-templates[OpenShift Documentation on Templates^] for more information.
 ====
 :numbered:
 
@@ -1928,7 +1928,7 @@ The OpenShift Container Platform comes with a long list of preconfigured templat
 ----
 
 Do not be alarmed by the complexity of Templates. You can even create templates from existing Objects. Please see our Documentation on 
-link:https://access.redhat.com/documentation/en-us/openshift_container_platform/3.5/html-single/developer_guide/#export-as-template[How to Create a Template from existing Objects].
+link:https://access.redhat.com/documentation/en-us/openshift_container_platform/3.5/html-single/developer_guide/#export-as-template[How to Create a Template from existing Objects^].
 
 ==== Create Instant App from Template
 
@@ -2440,7 +2440,7 @@ https://<Put External master name here>:8443/oapi/v1/namespaces/lifecycle/buildc
 
 ----
 +
-You can get the External Master name from the https://lab.rhpet.de[Red Hat Partner Enablement Lab Portal].
+You can get the External Master name from the https://lab.rhpet.de[Red Hat Partner Enablement Lab Portal^].
 +
 .You can also see the webhook on the command line 
 [subs=+macros]
