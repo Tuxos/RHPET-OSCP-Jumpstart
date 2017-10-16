@@ -6,9 +6,9 @@ Dennis Deitermann <dennis@redhat.com>
 :numbered:
 :icons: font
 
-Credits: +
-Lutz Lange - Container and Security Part +
-Daniel Messer - Container Native Storage Part
+Big thank you to aka. credits: +
+Lutz Lange for the Container and Security part +
+Daniel Messer for the Container Native Storage part
 
 == OpenShift Introduction Lab
 
