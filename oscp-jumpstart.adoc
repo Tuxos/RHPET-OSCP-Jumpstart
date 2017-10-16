@@ -1,5 +1,5 @@
 = Red Hat OpenShift Container Platform Jumpstart
-Autors: Dennis Deitermann, Daniel Messer, Lutz Lange
+Dennis Deitermann <dennis(at)redhat.com>
 :scrollbar:
 :data-uri:
 :toc: left
@@ -7,6 +7,10 @@ Autors: Dennis Deitermann, Daniel Messer, Lutz Lange
 :icons: font
 
 == OpenShift Introduction Lab
+
+Credits:
+Lutz Lange - Container and Security Part
+Daniel Messer - Container Native Storage Part
 
 === What is OpenShift ?
 
