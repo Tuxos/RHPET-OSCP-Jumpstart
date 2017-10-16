@@ -6,11 +6,11 @@ Dennis Deitermann <dennis@redhat.com>
 :numbered:
 :icons: font
 
-== OpenShift Introduction Lab
-
 Credits: +
 Lutz Lange - Container and Security Part +
 Daniel Messer - Container Native Storage Part
+
+== OpenShift Introduction Lab
 
 === What is OpenShift ?
 
