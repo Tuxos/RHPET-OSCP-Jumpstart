@@ -120,7 +120,7 @@ Password for the Proxy is: `r3dh4t1!`
 | andrew  | r3dh4t1! | Developer/User
 |=== 
 
-=== [Optional] Introduction into the CLI of OpenShift
+=== Introduction into the CLI of OpenShift
 
 With the OpenShift Container Platform command line interface (CLI), you can create applications and manage OpenShift Container Platform projects from a terminal. The CLI is ideal in situations where you are:
 
@@ -309,7 +309,7 @@ router-1-xq3r6             1/1       Running   7          22d       192.168.0.10
 As you can see, all infrastructure pods are running on the infranode, because we configured a default node selector for this.
 Please look https://blog.openshift.com/deploying-applications-to-specific-nodes/[here^] for more information.
 
-=== [Optional] Check Registry
+=== Check Registry
 
 In this lab scenario, infranode is the target for both the registry and the default router.
 
@@ -394,7 +394,7 @@ router-1-xq3r6             1/1       Running   12         28d       192.168.0.10
 As you can see, all infrastructure pods are running on the infranode, because we configured a default node selector for this.
 Please look https://blog.openshift.com/deploying-applications-to-specific-nodes/[here^] for more information.
 
-=== [Optional] Resource Management Lab
+=== Resource Management Lab
 
 In this lab, you learn how to manage OpenShift Container Platform resources.
 
@@ -970,7 +970,7 @@ Delete the object in the `hello-many-pods.json` definition file:
 
 (Optional) Create a project, set the quota with a pod value of `10`, and run `hello-many-pods.json`.
 
-==== [Optional] Create Services and Routes
+==== Create Services and Routes
 
 As `andrew`, create a project called `scvslab`:
 
@@ -1093,7 +1093,7 @@ Test that your service is working:
 Hello OpenShift!
 ----
 
-==== [Optional] Explore Containers and Routes
+==== Explore Containers and Routes
 
 Next, take a look at the route and registry containers.
 
@@ -1879,7 +1879,7 @@ build "ruby-hello-world-2" started
 
 ////
 
-== [ Optional ] Templates Lab
+== Templates Lab
 
 This lab includes the following sections:
 
@@ -2415,7 +2415,7 @@ I1222 01:54:51.372703       1 rolling.go:232] RollingUpdater: Scaling ruby-hello
 . Check that your Application is working now and that you can put and get keys.
 
 
-=== [ Optional ] Create and Use Webhooks
+=== Create and Use Webhooks
 
 You can integrate external systems into your OpenShift Container Platform
 environment so that they can start OpenShift Container Platform builds. This allows for use cases where making a change in the source code triggers a build process in OpenShift. This process is triggerd by web hooks. This is a special URL that e.g. your code repository can make a call to, when new code is available.
@@ -3453,7 +3453,7 @@ Which release of the ruby builder image was used to build the latest version of 
 
 
 // think about adding the schedule / policy before doing this manually again
-==== [Optional] Rescan the new container images
+==== Rescan the new container images
 
 Go to the CloudForms interface and schedule another image scam for the newly created rtest image. Notice that you will need to know your sha256 ID to identify the correct images quickly. In my case this sha256:828d... 
 
@@ -3478,7 +3478,7 @@ image::http://people.redhat.com/~llange/labimg/OpenSCAP-scan-results-in-cf-rtest
 
 Notice that we have fewer issues then before. The false finding with the aarch64 issue is still in and you can continue to ignore it. The link:https://access.redhat.com/errata/RHSA-2017:1308[RHSA-2017:1308] issue is gone. The nss security bug link:https://access.redhat.com/errata/RHSA-2017:1365[RHSA-2017-1365] is still present as was to be expected. We saw that this issue was not fixed with the link:https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/ruby-23-rhel7/images/2.3-6.8[6.8 release of our rhscl/ruby-23-rhel7] builder image when we looked it up in the link:https://access.redhat.com/containers[Red Hat Container Catalog].
 
-==== [Optional] Get the latest ruby builder image automatically 
+==== Get the latest ruby builder image automatically 
 
 Could OpenShift get the latest builder image as soon as it becomes available? Yes it can!
 
@@ -3501,11 +3501,11 @@ oc tag --scheduled=true --source=docker docker.io/image:tag myimagestream:tag
 ////
 
 
-=== [Optional] Continued Security in Container Environments 
+=== Continued Security in Container Environments 
 
 This section will show you how you can examine your Container Images on a regular basis, and how you OpenShift can consume this information to prevent execution of additional workloads when they are found to be vulnerable.
 
-==== [Optional] Create a Schedule for regular Security Checks  
+==== Create a Schedule for regular Security Checks  
 
 It is usually not sufficient to trigger container scans manually. If you build and check an image today and it is found to be good, this can change tomorrow or in a week or a year as new vulnerabilities are discovered. To address this, you want to schedule security scans at regular interval. You can do this with CloudForms. 
 
@@ -3543,7 +3543,7 @@ image::http://people.redhat.com/~llange/labimg/CloudForms-Create-Scanning-Schedu
 
 Now wait for that schedule to start scanning all your container images.
 
-==== [Optional] Prevent the starting of vulnerable Workloads
+==== Prevent the starting of vulnerable Workloads
 
 It is possible to use the annotations that the Container Scan puts into the Container Image Metadata on the OpenShift side to prevent starting more vulnerable workloads. You can consult the documentation for more background :
 
@@ -3704,7 +3704,7 @@ oc rollout history dc/rtest
 === Red Hat Insight for Containers
 ////
 
-== [Optional] Container Native Storage Lab
+== Container Native Storage Lab
 
 === Overview
 
