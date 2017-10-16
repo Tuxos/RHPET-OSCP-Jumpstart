@@ -5,7 +5,6 @@ Autors: Dennis Deitermann, Daniel Messer, Lutz Lange
 :toc: left
 :numbered:
 :icons: font
-:tabsize: 8
 
 == OpenShift Introduction Lab
 
