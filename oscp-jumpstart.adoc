@@ -1,14 +1,10 @@
 = Red Hat OpenShift Container Platform Jumpstart
-Dennis Deitermann <dennis@redhat.com>
+Dennis Deitermann <dennis@redhat.com>, Lutz Lange (Container Security part), Daniel Messer (Container Native Storage part)
 :scrollbar:
 :data-uri:
 :toc: left
 :numbered:
 :icons: font
-
-Big thank you to aka. credits: +
-Lutz Lange for the Container and Security part +
-Daniel Messer for the Container Native Storage part
 
 == OpenShift Introduction Lab
 
