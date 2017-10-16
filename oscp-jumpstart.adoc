@@ -1,8 +1,10 @@
 = Red Hat OpenShift Container Platform Jumpstart
 Autors: Dennis Deitermann, Daniel Messer, Lutz Lange
-:numbered:
-:icons:
+:scrollbar:
+:data-uri:
 :toc: left
+:numbered:
+:icons: font
 :tabsize: 8
 
 == OpenShift Introduction Lab
