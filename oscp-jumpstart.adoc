@@ -1,5 +1,5 @@
 = Red Hat OpenShift Container Platform Jumpstart
-Dennis Deitermann <dennis@redhat.com>, Lutz Lange (Container Security part), Daniel Messer (Container Native Storage part)
+Dennis Deitermann dennis@redhat.com, Lutz Lange (Container Security part), Daniel Messer (Container Native Storage part)
 :scrollbar:
 :data-uri:
 :toc: left
