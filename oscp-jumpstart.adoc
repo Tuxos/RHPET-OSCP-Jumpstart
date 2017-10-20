@@ -6,7 +6,6 @@ Dennis Deitermann (dennis@redhat.com), Lutz Lange (Container Security part), Dan
 :numbered:
 :icons: font
 
-[#primitves-nulls]
 == OpenShift Introduction
 
 === What is OpenShift ?
@@ -60,6 +59,8 @@ The following topics provide high-level, architectural information on core conce
 * https://docs.openshift.com/container-platform/3.5/architecture/core_concepts/templates.html[Templates^] allow for many objects to be created at once based on customized parameters.
 
 Click on the links above to get more information about the respective topic.
+
+== Introduction into the Lab
 
 === How to access the Lab Environment
 
