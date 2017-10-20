@@ -62,6 +62,29 @@ Click on the links above to get more information about the respective topic.
 
 == Introduction into the Lab
 
+=== Lab Reference
+
+[cols="3*", options="header"]
+|===
+| VM Name| FQDN | IP
+| SSH Gateway, DNS & Proxy Server | gw.example.com | 192.168.0.250, Ports 22&80 are open
+| Master | master.example.com | 192.168.0.100, Port 8443 is open
+| Infranode | infranode.example.com | 192.168.0.101
+| App Node 1 | node1.example.com | 192.168.0.102
+| App Node 2 | node2.example.com | 192.168.0.103
+| App Node 3 | node3.example.com | 192.168.0.104
+|===
+
+[cols="3*", options="header"]
+|===
+| Name | Password | Role
+| userXX | ask the instructor | ssh user to connect to the gateway VM
+| root | r3dh4t1! | root user for all VMs
+| admin | r3dh4t1! | OSCP & CloudForms Administrator & Auth user for the Proxy
+| marina | r3dh4t1! | Developer/User
+| andrew  | r3dh4t1! | Developer/User
+|=== 
+
 === How to access the Lab Environment
 
 First login to the ssh gateway with the user `rhpet`:
@@ -98,31 +121,7 @@ Please use your gateway IP adress, port 80 and check the checkbox at "Use this p
 Username for the Proxy is: `admin` +
 Password for the Proxy is: `r3dh4t1!`
 
-
-=== Lab Reference
-
-[cols="3*", options="header"]
-|===
-| VM Name| FQDN | IP
-| SSH Gateway, DNS & Proxy Server | gw.example.com | 192.168.0.250, Ports 22&80 are open
-| Master | master.example.com | 192.168.0.100, Port 8443 is open
-| Infranode | infranode.example.com | 192.168.0.101
-| App Node 1 | node1.example.com | 192.168.0.102
-| App Node 2 | node2.example.com | 192.168.0.103
-| App Node 3 | node3.example.com | 192.168.0.104
-|===
-
-[cols="3*", options="header"]
-|===
-| Name | Password | Role
-| userXX | ask the instructor | ssh user to connect to the gateway VM
-| root | r3dh4t1! | root user for all VMs
-| admin | r3dh4t1! | OSCP & CloudForms Administrator & Auth user for the Proxy
-| marina | r3dh4t1! | Developer/User
-| andrew  | r3dh4t1! | Developer/User
-|=== 
-
-=== Introduction into the CLI of OpenShift
+== Getting started with the CLI
 
 With the OpenShift Container Platform command line interface (CLI), you can create applications and manage OpenShift Container Platform projects from a terminal. The CLI is ideal in situations where you are:
 
@@ -137,7 +136,7 @@ The CLI is available using the `oc` command:
 $ oc <command>
 ----
 
-==== Basic Setup and Login
+=== Basic Setup and Login
 
 The `oc login` command is the best way to initially set up the CLI, and it serves as the entry point for most users. The interactive flow helps you establish a session to an OpenShift Container Platform server with the provided credentials. The information is automatically saved in a CLI configuration file that is then used for subsequent commands.
 
@@ -169,7 +168,7 @@ Using project "openshift-infra".
 
 You can log out of CLI using the `oc logout` command. But we don't do this now.
 
-==== Projects
+=== Projects
 
 A project in OpenShift Container Platform contains multiple objects to make up a logical application.
 
@@ -368,7 +367,7 @@ var environment = {"page":{"title":"Red Hat Container Registry","connect":true},
 * Connection #0 to host registry-console-default.cloudapps.example.com left intact
 ----
 
-==== Set Regions and Zones
+=== Set Regions and Zones
 
 We have already labeled your nodes.
 
@@ -1548,90 +1547,7 @@ UID         PID   PPID  C STIME TTY          TIME CMD
 [NOTE]
 Your pod names and output differ slightly.
 
-////
-// We did not configure our Registry to use persistent storage so we leave out this part
-// TODO implement section dealing with persistent storage
-. As `andrew` on the `master` host, start an application based on the `https://github.com/openshift/sti-php` repository that would require an S2I build:
-+
-----
-[root@master ~]# su - andrew
-[andrew@master ~]$ oc new-app openshift/php~https://github.com/openshift/sti-php -l "todelete=yes"
-
---> Found image bbfc4eb (2 weeks old) in image stream "php" in project "openshift" under tag "5.6" for "openshift/php"
-
-    Apache 2.4 with PHP 5.6
-    -----------------------
-    Platform for building and running PHP 5.6 applications
-
-    Tags: builder, php, php56, rh-php56
-
-    * A source build using source code from https://github.com/openshift/sti-php will be created
-      * The resulting image will be pushed to image stream "sti-php:latest"
-    * This image will be deployed in deployment config "sti-php"
-    * Port 8080/tcp will be load balanced by service "sti-php"
-      * Other containers can access this service through the hostname "sti-php"
-
---> Creating resources with label todelete=yes ...
-    imagestream "sti-php" created
-    buildconfig "sti-php" created
-    deploymentconfig "sti-php" created
-    service "sti-php" created
---> Success
-    Build scheduled, use 'oc logs -f bc/sti-php' to track its progress.
-    Run 'oc status' to view your app.
-----
-
-. Check the build logs to ensure that the build is complete and has been pushed into
- the registry (this needs some time):
-+
-----
-[andrew@master ~]$ oc logs -f builds/sti-php-1
-
-Cloning "https://github.com/openshift/sti-php" ...
-	Commit:	06e5686866c575813ef15d925609ee73e5a88b44 (Set default opcache.memory_consumption to 128MB (#153))
-	Author:	lucasnetau <james@lucas.net.au>
-	Date:	Fri Mar 17 17:55:28 2017 +1100
-
---> Installing application source...
-
-
-Pushing image 172.30.17.242:5000/explore-example/sti-php:latest ...
-Pushed 0/5 layers, 2% complete
-Pushed 1/5 layers, 21% complete
-Pushed 2/5 layers, 42% complete
-Pushed 3/5 layers, 72% complete
-Pushed 3/5 layers, 94% complete
-Pushed 4/5 layers, 99% complete
-Pushed 5/5 layers, 100% complete
-Push successful
-----
-TIP: The `-f` flag sets `oc logs` to "follow" the log, similar to `tail -f`.
-
-. On `master`, verify that the registry is using the `registry-storage` volume which was configured by the ansible OpenShift installer script:
-+
-----
-[root@master ~]# find /exports/registry/ | grep sti-php
-
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_uploads
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_layers
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_layers/sha256
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_layers/sha256/23f155615fc269417d39568cca589c6d87844490eafc2a3fde73e164b56f7e58
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_layers/sha256/23f155615fc269417d39568cca589c6d87844490eafc2a3fde73e164b56f7e58/link
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_layers/sha256/93b630859c0ea7dbe2b30ed22ccc5c53be542619405c6c4cb83cd2b5e7419648
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_layers/sha256/93b630859c0ea7dbe2b30ed22ccc5c53be542619405c6c4cb83cd2b5e7419648/link
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_layers/sha256/07f9fc72dffe9fbf14aadcb3f1580e973f5232e411641b6d9fb4da3291c21d19
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_layers/sha256/07f9fc72dffe9fbf14aadcb3f1580e973f5232e411641b6d9fb4da3291c21d19/link
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_layers/sha256/899d18f70e51e53b5c20a0ae2709325fae6db272e04fd6eb982176572d70026d
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_layers/sha256/899d18f70e51e53b5c20a0ae2709325fae6db272e04fd6eb982176572d70026d/link
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_layers/sha256/e50b1d9e90ba6803b2c3b8712a71299dafd614d8f8f6616bb692e2873207188f
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_layers/sha256/e50b1d9e90ba6803b2c3b8712a71299dafd614d8f8f6616bb692e2873207188f/link
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_layers/sha256/beec41a6e52f250a5a164b043891a88c6d3fa1ecfe242af83b11ce45c61e6201
-/exports/registry/docker/registry/v2/repositories/explore-example/sti-php/_layers/sha256/beec41a6e52f250a5a164b043891a88c6d3fa1ecfe242af83b11ce45c61e6201/link
-----
-////
-
-== Creating Applications Lab
+=== Creating Applications Lab
 
 This lab includes the following sections:
 
@@ -1645,11 +1561,11 @@ In this section, you deploy an application from a code repository and follow the
 
 - Review your custom script messages in the logs.
 
-=== Deploy Application on Web Console
+==== Deploy Application on Web Console
 
 Here, you connect to and become familiar with the web console, create a project and an application, and scale a deployment and the topology view.
 
-==== Connect To and Explore Web Console
+===== Connect To and Explore Web Console
 
 . Use your browser to go to the OpenShift web console at `https://master.example.com:8443[https://master.example.com:8443^]`.
 
@@ -1657,7 +1573,7 @@ Here, you connect to and become familiar with the web console, create a project 
 
 . Take a few minutes to browse your projects.
 
-==== Create New Project
+===== Create New Project
 
 . Click *Projects* and select *View all projects* to return to the Projects view.
 
@@ -1720,168 +1636,8 @@ Once the project is in place, the *Add to Project* screen is displayed.
 
 . Go back to your application's *Overview* screen by clicking *Overview* again.
 
-////
-// This Lab does not work as expected any more. Output from .s2i/bin/assemble is not visible in the build logs any more
 
-=== [ Optional Side Lab ] Customize Build Script
-
-OpenShift Container Platform 3 supports customization of both the build and run processes. Generally speaking, this involves modifying the S2I scripts from the builder image. While building your code, OpenShift Container Platform checks the scripts in your repository's `.sti/bin` folder to see if they override or supersede the builder image's scripts. If it finds scripts that do so, it executes those scripts.
-
-For details on the scripts and their execution and customization, see the link:https://access.redhat.com/documentation/en-us/openshift_container_platform/3.5/html-single/creating_images/#s2i-scripts[OpenShift Documentation on Creating Images].
-
-
-==== Clone Repository and Launch Application from Local Copy
-
-. Log in to OpenShift Container Platform as `marina`:
-.. Connect to the OpenShift Container Platform master by following the same steps as before.
-.. When prompted, type the username and password:
-** *Username*: `marina`
-** *Password*: `r3dh4t1!`
-+
-----
-[root@master ~]# su - marina
-[marina@master ~]$ oc login https://master.example.com:8443 -u marina
-[marina@master ~]$ oc new-project custom-s2i-script --display-name="Custom S2I Build Script" --description="This is the project we use to learn how to create a customized build script"
-----
-
-==== Fork Repository
-
-IMPORTANT: This section requires a GitHub account. Create one if you do not have one already. It is free and useful.
-
-. From the GitHub web UI, fork the `https://github.com/openshift/ruby-hello-world[https://github.com/openshift/ruby-hello-world]` Git repository into your own Git account by clicking *Fork* in the upper right corner.
-
-* This creates a repository in your Git account with a name similar to `https://github.com/yourname/ruby-hello-world/`, where _yourname_ is your Git username.
-
-. Clone this `https://github.com/yourname/ruby-hello-world` repository so that you can edit it locally and test a Red Hat-customized script with it:
-+
-CAUTION: Be sure to replace _yourname_ with your Git username.
-+
-----
-[marina@master ~]$ git clone https://github.com/yourname/ruby-hello-world
-
-Cloning into 'ruby-hello-world'...
-remote: Counting objects: 271, done.
-remote: Total 271 (delta 0), reused 0 (delta 0), pack-reused 271
-Receiving objects: 100% (271/271), 41.53 KiB | 0 bytes/s, done.
-Resolving deltas: 100% (89/89), done.
-----
-
-. Create an application by running `oc new-app` in the local repository:
-+
-----
-[marina@master ~]$ cd ruby-hello-world/
-[marina@master ruby-hello-world]$ oc new-app openshift/ruby~. 
-----
-
-. View the current build status and build logs:
-+
-----
-[marina@master]$ oc get builds
-
-NAME                 TYPE      FROM         STATUS    STARTED         DURATION
-ruby-hello-world-1   Source    Git@master   Running   4 seconds ago   4s
-----
-
-. View the build log:
-+
-----
-[marina@master ]$ oc logs -f builds/ruby-hello-world-1
-----
-
-. Verify that your pod has deployed:
-+
-----
-[marina@master ]$ oc get pods
-
-NAME                       READY     STATUS      RESTARTS   AGE
-ruby-hello-world-1-70mlb   1/1       Running     0          12s
-ruby-hello-world-1-build   0/1       Completed   0          9m
-----
-
-
-==== Add Script to Repository
-
-. Open a new tab in your browser, go to `http://www.rhpet.de/assemble[http://www.rhpet.de/assemble]`, and copy all of the text there.
-
-. Go to your GitHub repository for your application from the previous section.
-
-. In the GitHub web UI, navigate to the `.s2i/bin` folder.
-
-. Click the *Create new File* button at the top right (to the right of `bin` in the breadcrumb).
-
-. Name your file `assemble`.
-
-. In the GitHub web UI, paste the content you copied earlier into the text area.
-
-. Type a commit message in the text field.
-
-. Click *Commit*.
-
-
-==== Create Application From Repository With Custom Build Script
-
-. From your browser, go to the OpenShift web console at `https://master.example.com:8443`.
-+
-
-. Log in as `marina` with the password `r3dh4t1!`.
-
-. Click the blue *New Project* button in the top right corner.
-
-. Specify the project name, display name, and description:
-* *Name*: `my-custom`
-* *Display Name*: `My custom assemble script project`
-* *Description*: An explanation of your choice
-* Click on `Create`
-
-** Once the project is in place, the *Select Image or Template* screen is displayed.
-
-. In the *Select Image or Template* screen, type `ruby` in the search field to filter the available Instant Apps, Templates, and Builder Images.
-
-. Select the `ruby:2.0` builder image from the right hand side.
-
-. Specify the name and Git repository URL:
-* *Name*: `my-custom-builder-test`
-* *Git Repository URL*: `https://github.com/yourname/ruby-hello-world`
-+
-CAUTION: Remember to replace _yourname_ with your Git username in the above command.
-
-. Follow the build process logs and watch for the assemble script messages, which confirms that the custom script ran:
-+
-----
-I0522 18:22:53.179791       1 install.go:251] Using "assemble" installed from "<source-dir>/.s2i/bin/assemble"
-...
-I0522 18:22:53.180981       1 sti.go:166] Running "assemble" in "my-custom/my-custom-builder-test-1:adc52cfe"
-----
-
-////
-
-////
-// Test Section Do this to check if you can see the output before reactivation of the lab
-# git clone http://github.com/MYGITUSER/ruby-hello-world
-cd ruby-hello-world/
-oc new-app openshift/ruby~.
-vi .s2i/bin/assemble
-chmod +x .s2i/bin/assemble
-git add .s2i/bin/assemble
-git config.email "mymail@forgithub.com"
-git config.name "MYGITUSER"
-git commit -m "adding custom asseble"
-git push 
-
-Verify that you have the assemble script in your github repository
-
-You need to increase the verbosity of your build by adding. You can add an Environemnt Var to do this :
-# oc set env bc ruby-hello-world BUILD_LOGLEVEL=3
-
-Start a new build for your app 
-# oc start-build ruby-hello-world
-# oc get pods
-build "ruby-hello-world-2" started
-# oc log -f ruby-hello-world-3-build
-
-////
-
-== Templates Lab
+=== Templates Lab
 
 This lab includes the following sections:
 
@@ -1900,9 +1656,9 @@ Templates allow an easy way to define all the required objects of an complex to 
 ====
 :numbered:
 
-=== Create and Upload Template
+==== Create and Upload Template
 
-==== Install Template
+===== Install Template
 
 The example in this section shows an application and a service with two pods: a front-end web tier and a back-end database tier. This application uses auto-generated parameters and other sleek features of OpenShift Container Platform.  Note that this application contains predefined connectivity between the front-end and back-end components as part of its YAML definition. You add further resources in a later lab.
 
@@ -1933,7 +1689,7 @@ The OpenShift Container Platform comes with a long list of preconfigured templat
 Do not be alarmed by the complexity of Templates. You can even create templates from existing Objects. Please see our Documentation on 
 link:https://access.redhat.com/documentation/en-us/openshift_container_platform/3.5/html-single/developer_guide/#export-as-template[How to Create a Template from existing Objects^].
 
-==== Create Instant App from Template
+===== Create Instant App from Template
 
 . On your browser, connect to the OpenShift web console at `https://master.example.com:8443[https://master.example.com:8443]`:
 .. If prompted, accept the untrusted certificate.
@@ -1977,18 +1733,18 @@ The template configuration screen is displayed. Here, you can specify certain op
 [NOTE]
 Our Application is currently still missing heath checks for all containers. You will deal with health checks later in this lab. If you are an experienced OpenShift User feel free to build a template with health checks included.
 
-==== Use Application
+===== Use Application
 
 After the build is complete, visit your application at `http://example-route-instant-app.cloudapps.example.com/[http://example-route-instant-app.cloudapps.example.com/]`.
 
 [NOTE]
 Be sure to use HTTP and _not_ HTTPS. HTTPS does not work for this example because the form submission was coded with HTTP links.
 
-=== Use Templates and Template Parameters
+==== Use Templates and Template Parameters
 
 Quick starts are nice and handy. But you will not be writing them from scratch. Developers are usualld stating with the components themselvs and will put the whole app together step by step first. This is what we will walk you through next. You treat the quick-start example as two separate applications to be wired together.
 
-==== Deploy Ephemeral Database Back End
+===== Deploy Ephemeral Database Back End
 
 . Create a project new project for this work to live in:
 
@@ -2092,7 +1848,7 @@ MYSQL_DATABASE=mydb
 Notic that the security releavant settings in environment vars are not displayed by commented out in the above output.
 
 
-==== Deploy Application's Ruby Front End
+===== Deploy Application's Ruby Front End
 
 . As `marina`, create an application with the `https://github.com/openshift/ruby-hello-world` Git repository:
 +
@@ -2139,7 +1895,7 @@ ruby-hello-world   ruby-hello-world-templates.cloudapps.example.com             
 http://ruby-hello-world-templates.cloudapps.example.com
 ----
 
-== Deployment Life Cycle Lab
+=== Deployment Life Cycle Lab
 
 This lab includes the following sections:
 
@@ -2154,7 +1910,7 @@ In this section, you create a Git webhook and start a new build and a new
 
 :numbered:
 
-=== Roll Back, Activate, and Code Life Cycle
+==== Roll Back, Activate, and Code Life Cycle
 
 Going back and forth between different versions of your application and its configuration is helpful not only for developers but for operators as well. You can switch back a deployment version that you know is a working state with OpenShift.
 
@@ -2164,13 +1920,13 @@ In this section, you take user `marina's hello-ruby` application, modify its
 
 The next sections require a GitHub account.
 
-==== Fork Repository
+===== Fork Repository
 
 If you have not done so already: from the Git web interface, click *Fork* in the
  upper right corner of the GitHub web UI to fork the Git repository
   `https://github.com/openshift/ruby-hello-world` into your own account.
 
-==== Create Your Application
+===== Create Your Application
 
 [NOTE]
 Remember that `buildconfig` (the build-configuration file) instructs OpenShift Container Platform on how to perform a build.
@@ -2199,10 +1955,6 @@ Remember that `buildconfig` (the build-configuration file) instructs OpenShift C
 [marina@master ~]$ oc new-app https://github.com/openshift/ruby-hello-world 
 ----
 +
-////
-[NOTE]
-The `--strategy=source` option forces `oc new-app` to adopt the S2I strategy. A simpler alternative is the `new-app` command using your own repository, but you are intentionally picking the "wrong" repository as part of this learning exercise.
-////
 . Run `oc env` to add the environment variables for a database to be used later:
 +
 ----
@@ -2417,12 +2169,12 @@ I1222 01:54:51.372703       1 rolling.go:232] RollingUpdater: Scaling ruby-hello
 . Check that your Application is working now and that you can put and get keys.
 
 
-=== Create and Use Webhooks
+==== Create and Use Webhooks
 
 You can integrate external systems into your OpenShift Container Platform
 environment so that they can start OpenShift Container Platform builds. This allows for use cases where making a change in the source code triggers a build process in OpenShift. This process is triggerd by web hooks. This is a special URL that e.g. your code repository can make a call to, when new code is available.
 
-==== Find the Webhook URL
+===== Find the Webhook URL
 
 Your GitHub account can configure a webhook whenever you push a commit to a specific branch.
 
@@ -2483,7 +2235,7 @@ No events.
 . Disable SSL verification.
 . Click *Add Webhook*.
 
-==== Test Your Webhook
+===== Test Your Webhook
 
 To test your webhook by changing and commiting / pushing some code in the Git repository. Do the following:
 
@@ -2550,7 +2302,6 @@ Alternatively, view this information from the CLI:
 [marina@master ~]$ oc describe dc/ruby-hello-world
 ...
 ----
-
 ====
 
 . From the CLI, roll back the deployment:
@@ -2630,7 +2381,7 @@ Warning: the following images triggers were disabled: ruby-hello-world
   You can re-enable them with: oc deploy ruby-hello-world --enable-triggers
 ----
 
-== Cluster Metrics Introduction
+=== Cluster Metrics Introduction
 
 Metrics are an important part of every monitoring solution. Metrics allow you to watch certain counters in your environment. OpenShift Container Platform comes with a metric stack that you can use for multiple purposes. The default use case collects information about CPU usage, memory usage, network troughput and a few other measurements.
 
@@ -2728,7 +2479,19 @@ Info:  Using context for cluster-admin access: 'openshift-infra/master-example-c
 [Note] Completed with no errors or warnings seen.
 ----
 
-== CloudForms Introduction
+== Containers and Security Lab
+
+In this Lab you will:
+
+* Start a Ruby based example application
+* Add a Heath Check
+* Scan the container image for known vulnerabilities
+** [Optional : prevent execution of images with know vulnerabilities]
+* Patch issues found if possible
+* Create a schedule for scanning container images 
+* Configure OpenShift to always get the latest ruby builder image
+
+=== CloudForms Introduction
 
 CloudForms is the designated Operations Tool for the Openshift Container Platform. But CloudForms is much more than just a tool to look at and manage OpenShift. It originally found it's way into the Red Hat portfolio though the acquisition of the company ManageIQ. It was primarily a virtualisation management tool in the beginning. The big differentiator to other existing tools was the main focus on *Operational Visibility* or *Insight* as it is called back in the day.
 
@@ -2783,18 +2546,6 @@ image::http://people.redhat.com/~llange/labimg/CloudForms-Container-Topology.png
 If this view is too full use the service icons to toggle visibilty of the respective objects. You could also use the search field to grey out every object not matching your search. 
 +
 The nice thing about the topology view is that every object is displayed with a status indicator. In our case every object has a green border. It an object has a failed state, you will see it with a red boarder instead. You could chose to display object names, or hover over the object with the mouse cursor to see name, type and status of that object. A double click on the object will bring you to the details page of that object in CloudForms.
-
-== Containers and Security
-
-In this Lab you will:
-
-* Start a Ruby based example application
-* Add a Heath Check
-* Scan the container image for known vulnerabilities
-** [Optional : prevent execution of images with know vulnerabilities]
-* Patch issues found if possible
-* Create a schedule for scanning container images 
-* Configure OpenShift to always get the latest ruby builder image
 
 === Application Setup
 
