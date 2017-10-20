@@ -6,8 +6,8 @@ Dennis Deitermann (dennis@redhat.com), Lutz Lange (Container Security part), Dan
 :numbered:
 :icons: font
 
-[.lead]
-OpenShift Introduction
+[#primitves-nulls]
+== OpenShift Introduction
 
 === What is OpenShift ?
 
