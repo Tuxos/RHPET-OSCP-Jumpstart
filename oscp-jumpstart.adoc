@@ -18,13 +18,13 @@ https://www.youtube.com/watch?v=aZ40GobvA1c[What is PaaS?^]
 
 Official documentation for https://docs.openshift.com/container-platform/3.5/welcome/index.html[OpenShift Container Platform^]
 
-==== Overview
+=== Overview
 
 OpenShift v3 is a layered system designed to expose underlying Docker-formatted container image and Kubernetes concepts as accurately as possible, with a focus on easy composition of applications by a developer. For example, install Ruby, push code, and add MySQL.
 
 Unlike OpenShift v2, more flexibility of configuration is exposed after creation in all aspects of the model. The concept of an application as a separate object is removed in favor of more flexible composition of "services", allowing two web containers to reuse a database or expose a database directly to the edge of the network.
 
-==== What are the Layers?
+=== What are the Layers?
 
 The Docker service provides the abstraction for packaging and creating Linux-based, lightweight container images. Kubernetes provides the cluster management and orchestrates containers on multiple hosts.
 
@@ -40,7 +40,7 @@ OpenShift Container Platform adds:
 
 image::http://www.rhpet.de/pictures/OpenShift-Architecture.png[OpenShift Architecture]
 
-==== Core Concepts
+=== Core Concepts
 
 The following topics provide high-level, architectural information on core concepts and objects you will encounter when using OpenShift Container Platform. Many of these objects come from Kubernetes, which is extended by OpenShift Container Platform to provide a more feature-rich development lifecycle platform.
 
