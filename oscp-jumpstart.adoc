@@ -125,7 +125,7 @@ The following topics provide high-level, architectural information on core conce
 
 Click on the links above to get more information about the respective topic.
 
-== Getting started with the OpenShift CLI
+== Getting started with the OpenShift CLI and the Webinterface
 
 With the OpenShift Container Platform command line interface (CLI), you can create applications and manage OpenShift Container Platform projects from a terminal. The CLI is ideal in situations where you are:
 
